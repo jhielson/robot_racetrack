@@ -24,5 +24,11 @@
   <arg name="marker" value="'{$(arg h), ns: 'MWS', id: 0, type: 4, action: 0, $(arg pose), $(arg scale), $(arg color), $(arg lt), $(arg pts)}'" />
   <node name="pub1" pkg="rostopic" type="rostopic" args="pub /shape visualization_msgs/Marker $(arg marker)"/>
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_racetrack)/config/racetrack.rviz"/>
+  <arg name="c2" value="color: {a: 1.0, b: 0.0, g: 1.0, r: 0.0}"/>
+  <arg name="start" value="'{$(arg h), ns: 'MarkerWithShape', id: 1, type: 2, action: 0, $(arg pose), scale: {x: 0.6, y: 0.6, z: 0.01}, $(arg c2), $(arg lt)}'" />
+  <node name="pub2" pkg="rostopic" type="rostopic" args="pub /shape visualization_msgs/Marker $(arg start)"/>
+  <arg name="pose2" value="pose: {$(arg orientation), position: {x: 0.0, y: 0.0, z: 0.4}}"/>
+  <arg name="text" value="'{$(arg h), ns: 'MarkerWithShape', id: 2, type: 9, action: 0, $(arg pose2), $(arg scale), $(arg c2), $(arg lt), text: 'Start'}'" />
+  <node name="pub3" pkg="rostopic" type="rostopic" args="pub /shape visualization_msgs/Marker $(arg text)"/>
 </launch>
 
